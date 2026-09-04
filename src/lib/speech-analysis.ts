@@ -115,7 +115,7 @@ export function analyzeSpeech(raw: string): Analysis {
     improvements.push("Introduction is slightly long — trim the opening to one sharp line");
   if (repeated.length)
     improvements.push(
-      `Some phrasing is repetitive — "${repeated[0][0]}" appears ${repeated[0][1]} times`,
+      `Some phrasing is repetitive — "${repeated[0]![0]}" appears ${repeated[0]![1]} times`,
     );
   if (fillerWords > 3) improvements.push(`Cut filler words — we counted ${fillerWords}`);
   if (paragraphs < 3)
@@ -202,10 +202,10 @@ export function improveSpeech(raw: string): string {
 
   const opener =
     "Here's the one thing I want you to leave with today. " +
-    (sentences[0] ? tidy(sentences[0]) : "");
+    (sentences[0] ? tidy(sentences[0]!) : "");
 
   const closer =
-    (sentences.length > 1 ? tidy(sentences[sentences.length - 1]) + " " : "") +
+    (sentences.length > 1 ? tidy(sentences[sentences.length - 1]!) + " " : "") +
     "So if you remember nothing else, remember this: the idea only matters once someone acts on it \u2014 and that someone is in this room.";
 
   const labels = ["First,", "Second,", "Finally,"];

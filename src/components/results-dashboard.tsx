@@ -36,9 +36,8 @@ export function ResultsDashboard({ analysis, speech }: { analysis: Analysis; spe
     { icon: Type, label: "Filler Words", value: String(analysis.metrics.fillerWords) },
   ];
 
-  const totalSeconds =
-    Number(analysis.metrics.speakingTime.split("m")[0]) * 60 +
-    Number(analysis.metrics.speakingTime.split(" ")[1].replace("s", ""));
+  const [mPart, sPart] = analysis.metrics.speakingTime.split(/m\s+/);
+  const totalSeconds = Number(mPart ?? 0) * 60 + Number((sPart ?? "0s").replace("s", ""));
 
   return (
     <div className="space-y-6">

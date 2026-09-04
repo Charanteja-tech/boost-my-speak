@@ -27,7 +27,7 @@ export const Route = createFileRoute("/history")({
 function HistoryPage() {
   const avg = Math.round(HISTORY.reduce((a, h) => a + h.score, 0) / HISTORY.length);
   const best = Math.max(...HISTORY.map((h) => h.score));
-  const growth = HISTORY[0].score - HISTORY[HISTORY.length - 1].score;
+  const growth = HISTORY[0]!.score - HISTORY[HISTORY.length - 1]!.score;
 
   return (
     <div className="min-h-screen">
