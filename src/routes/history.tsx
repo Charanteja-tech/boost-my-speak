@@ -59,30 +59,36 @@ function HistoryPage() {
           {HISTORY.map((h, i) => (
             <div
               key={h.title}
-              className="flex flex-wrap items-center gap-4 border-b border-border/70 p-5 transition-colors last:border-0 hover:bg-surface-2/50 sm:p-6"
+              className="border-b border-border/70 p-5 transition-colors last:border-0 hover:bg-surface-2/50 sm:flex sm:items-center sm:gap-5 sm:p-6"
               style={{ animationDelay: `${i * 60}ms` }}
             >
-              <div className="min-w-52 flex-1">
-                <p className="font-display text-base font-semibold">{h.title}</p>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  {h.date} · {h.words} words · {h.duration}
+              <div className="flex items-start justify-between gap-4 sm:min-w-52 sm:flex-1">
+                <div>
+                  <p className="font-display text-base font-semibold leading-snug">{h.title}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    {h.date} · {h.words} words · {h.duration}
+                  </p>
+                </div>
+                <p className="font-display text-2xl font-semibold tabular-nums sm:hidden">
+                  {h.score}
                 </p>
               </div>
-              <span className="rounded-full border border-border bg-secondary/60 px-3 py-1 text-xs text-muted-foreground">
-                {h.tag}
-              </span>
-              <div className="w-40">
-                <div className="h-2 overflow-hidden rounded-full bg-secondary">
+              <div className="mt-4 flex items-center gap-4 sm:mt-0">
+                <span className="whitespace-nowrap rounded-full border border-border bg-secondary/60 px-3 py-1 text-xs text-muted-foreground">
+                  {h.tag}
+                </span>
+                <div className="h-2 flex-1 overflow-hidden rounded-full bg-secondary sm:w-40 sm:flex-none">
                   <div
-                    className="h-full rounded-full brand-gradient"
+                    className="h-full rounded-full brand-gradient transition-[width] duration-700"
                     style={{ width: `${h.score}%` }}
                   />
                 </div>
+                <p className="hidden w-12 text-right font-display text-2xl font-semibold tabular-nums sm:block">
+                  {h.score}
+                </p>
               </div>
-              <p className="w-14 text-right font-display text-2xl font-semibold tabular-nums">
-                {h.score}
-              </p>
             </div>
+
           ))}
         </section>
 
