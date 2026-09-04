@@ -59,7 +59,7 @@ export function PracticeMode({ targetSeconds }: { targetSeconds: number }) {
         </div>
         <div className="mt-6 h-2 w-full max-w-xl overflow-hidden rounded-full bg-secondary">
           <div
-            className="h-full rounded-full bg-[var(--gradient-brand)] transition-[width] duration-1000 ease-linear"
+            className="h-full rounded-full brand-gradient transition-[width] duration-1000 ease-linear"
             style={{ width: `${pct}%` }}
           />
         </div>
@@ -75,7 +75,7 @@ export function PracticeMode({ targetSeconds }: { targetSeconds: number }) {
           <button
             onClick={() => setRunning((r) => !r)}
             disabled={left === 0}
-            className="inline-flex items-center gap-2 rounded-xl bg-[var(--gradient-brand)] px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02] disabled:opacity-40"
+            className="btn-brand px-6 py-3 text-sm"
           >
             {running ? <Pause className="size-4" /> : <Play className="size-4" />}
             {running ? "Pause" : left === target ? "Start Practice" : "Resume"}
@@ -85,7 +85,7 @@ export function PracticeMode({ targetSeconds }: { targetSeconds: number }) {
               setRunning(false);
               setLeft(target);
             }}
-            className="inline-flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+            className="btn-ghost px-5 py-3 text-sm"
           >
             <RotateCcw className="size-4" />
             Reset

@@ -74,7 +74,7 @@ function HistoryPage() {
               <div className="w-40">
                 <div className="h-2 overflow-hidden rounded-full bg-secondary">
                   <div
-                    className="h-full rounded-full bg-[var(--gradient-brand)]"
+                    className="h-full rounded-full brand-gradient"
                     style={{ width: `${h.score}%` }}
                   />
                 </div>

@@ -99,7 +99,7 @@ function CoachPage() {
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => setText(SAMPLE_SPEECH)}
-                className="inline-flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                className="btn-ghost w-full px-5 py-3 text-sm sm:w-auto"
               >
                 <Wand2 className="size-4" />
                 Try an example
@@ -111,7 +111,7 @@ function CoachPage() {
                   setPhase("loading");
                 }}
                 disabled={!text.trim() || phase === "loading"}
-                className="inline-flex items-center gap-2 rounded-xl bg-[var(--gradient-brand)] px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-40"
+                className="btn-brand w-full px-6 py-3 text-sm sm:w-auto"
               >
                 {phase === "loading" ? (
                   <Loader2 className="size-4 animate-spin" />
@@ -141,7 +141,7 @@ function CoachPage() {
             </div>
             <div className="mt-6 h-1.5 overflow-hidden rounded-full bg-secondary">
               <div
-                className="h-full rounded-full bg-[var(--gradient-brand)] transition-[width] duration-500"
+                className="h-full rounded-full brand-gradient transition-[width] duration-500"
                 style={{ width: `${((stage + 1) / STAGES.length) * 100}%` }}
               />
             </div>

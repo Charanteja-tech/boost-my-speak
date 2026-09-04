@@ -12,7 +12,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
         <Link to="/" className="group flex items-center gap-2.5">
-          <span className="flex size-9 items-center justify-center rounded-xl bg-[var(--gradient-brand)] text-primary-foreground shadow-[var(--shadow-glow)]">
+          <span className="flex size-9 items-center justify-center rounded-xl brand-gradient text-primary-foreground shadow-[var(--shadow-glow)]">
             <AudioLines className="size-5" />
           </span>
           <span className="font-display text-base font-semibold tracking-tight">

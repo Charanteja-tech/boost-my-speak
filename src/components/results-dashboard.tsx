@@ -164,7 +164,7 @@ export function ResultsDashboard({ analysis, speech }: { analysis: Analysis; spe
                 setWorking(false);
               }, 1400);
             }}
-            className="inline-flex items-center gap-2 rounded-xl bg-[var(--gradient-brand)] px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02] disabled:opacity-60"
+            className="btn-brand w-full px-6 py-3 text-sm sm:w-auto"
             disabled={working}
           >
             <Wand2 className={`size-4 ${working ? "animate-spin" : ""}`} />
