@@ -65,30 +65,30 @@ function CoachPage() {
       <SiteHeader />
 
       <main className="aurora mx-auto max-w-6xl px-5 pb-24">
-        <section className="pt-16 pb-10 text-center sm:pt-24">
+        <section className="pt-12 pb-9 text-center sm:pt-24 sm:pb-10">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-3.5 py-1.5 text-xs text-muted-foreground">
             <Sparkles className="size-3.5 text-primary" />
             Simulated AI analysis · no account needed
           </span>
-          <h1 className="mx-auto mt-6 max-w-3xl font-display text-4xl font-semibold leading-[1.08] sm:text-6xl">
+          <h1 className="animate-rise mx-auto mt-6 max-w-3xl font-display text-[2.1rem] font-semibold leading-[1.08] sm:text-6xl">
             Speak with confidence.
             <br />
             <span className="text-gradient">Present with impact.</span>
           </h1>
-          <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
+          <p className="animate-rise mx-auto mt-5 max-w-xl text-base text-muted-foreground sm:text-lg" style={{ animationDelay: "120ms" }}>
             Get instant feedback on your presentation before you step on stage.
           </p>
         </section>
 
-        <section className="glass-card glow rounded-3xl p-5 sm:p-7">
+        <section className="glass-card glow animate-rise rounded-3xl p-4 sm:p-7" style={{ animationDelay: "200ms" }}>
           <textarea
             value={text}
             onChange={(e) => setText(e.target.value)}
-            rows={11}
+            rows={10}
             placeholder="Paste your speech here..."
             className="w-full resize-y rounded-2xl border border-border bg-surface-2/50 p-5 text-sm leading-relaxed text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-primary/60 focus:ring-4 focus:ring-primary/10"
           />
-          <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
+          <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3 text-xs text-muted-foreground">
               <span className="tabular-nums">{words} words</span>
               <span className="size-1 rounded-full bg-border" />
@@ -96,7 +96,7 @@ function CoachPage() {
                 ~{Math.max(0, Math.round((words / 150) * 60))}s spoken
               </span>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
               <button
                 onClick={() => setText(SAMPLE_SPEECH)}
                 className="btn-ghost w-full px-5 py-3 text-sm sm:w-auto"

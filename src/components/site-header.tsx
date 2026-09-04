@@ -25,7 +25,7 @@ export function SiteHeader() {
               key={n.to}
               to={n.to}
               activeOptions={{ exact: n.to === "/" }}
-              className="rounded-lg px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+              className="rounded-lg px-2.5 py-2 text-sm text-muted-foreground sm:px-3 transition-colors hover:bg-secondary hover:text-foreground"
               activeProps={{ className: "bg-secondary text-foreground" }}
             >
               {n.label}

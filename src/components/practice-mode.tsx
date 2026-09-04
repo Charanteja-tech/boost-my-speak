@@ -50,9 +50,9 @@ export function PracticeMode({ targetSeconds }: { targetSeconds: number }) {
         </span>
       </div>
 
-      <div className="mt-8 flex flex-col items-center">
+      <div className="mt-7 flex flex-col items-center sm:mt-8">
         <div
-          className="font-display text-6xl font-semibold tabular-nums sm:text-7xl"
+          className="font-display text-5xl font-semibold tabular-nums sm:text-7xl"
           style={{ textShadow: "0 0 40px color-mix(in oklab, var(--brand) 40%, transparent)" }}
         >
           {mm}:{ss}
@@ -71,7 +71,7 @@ export function PracticeMode({ targetSeconds }: { targetSeconds: number }) {
           </span>
         </div>
 
-        <div className="mt-8 flex gap-3">
+        <div className="mt-8 flex w-full max-w-xl flex-col gap-3 sm:w-auto sm:flex-row">
           <button
             onClick={() => setRunning((r) => !r)}
             disabled={left === 0}
