@@ -50,16 +50,16 @@ export function PracticeMode({ targetSeconds }: { targetSeconds: number }) {
         </span>
       </div>
 
-      <div className="mt-8 flex flex-col items-center">
+      <div className="mt-7 flex flex-col items-center sm:mt-8">
         <div
-          className="font-display text-6xl font-semibold tabular-nums sm:text-7xl"
+          className="font-display text-5xl font-semibold tabular-nums sm:text-7xl"
           style={{ textShadow: "0 0 40px color-mix(in oklab, var(--brand) 40%, transparent)" }}
         >
           {mm}:{ss}
         </div>
         <div className="mt-6 h-2 w-full max-w-xl overflow-hidden rounded-full bg-secondary">
           <div
-            className="h-full rounded-full bg-[var(--gradient-brand)] transition-[width] duration-1000 ease-linear"
+            className="h-full rounded-full brand-gradient transition-[width] duration-1000 ease-linear"
             style={{ width: `${pct}%` }}
           />
         </div>
@@ -71,11 +71,11 @@ export function PracticeMode({ targetSeconds }: { targetSeconds: number }) {
           </span>
         </div>
 
-        <div className="mt-8 flex gap-3">
+        <div className="mt-8 flex w-full max-w-xl flex-col gap-3 sm:w-auto sm:flex-row">
           <button
             onClick={() => setRunning((r) => !r)}
             disabled={left === 0}
-            className="inline-flex items-center gap-2 rounded-xl bg-[var(--gradient-brand)] px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02] disabled:opacity-40"
+            className="btn-brand px-6 py-3 text-sm"
           >
             {running ? <Pause className="size-4" /> : <Play className="size-4" />}
             {running ? "Pause" : left === target ? "Start Practice" : "Resume"}
@@ -85,7 +85,7 @@ export function PracticeMode({ targetSeconds }: { targetSeconds: number }) {
               setRunning(false);
               setLeft(target);
             }}
-            className="inline-flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+            className="btn-ghost px-5 py-3 text-sm"
           >
             <RotateCcw className="size-4" />
             Reset

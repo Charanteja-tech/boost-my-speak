@@ -12,6 +12,7 @@ import {
   Wand2,
 } from "lucide-react";
 import { ScoreRing } from "./score-ring";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { PracticeMode } from "./practice-mode";
 import { improveSpeech, type Analysis } from "@/lib/speech-analysis";
 
@@ -19,6 +20,7 @@ const verdict = (s: number) =>
   s >= 90 ? "Stage ready" : s >= 80 ? "Strong draft" : s >= 68 ? "Solid, needs a pass" : "Early draft";
 
 export function ResultsDashboard({ analysis, speech }: { analysis: Analysis; speech: string }) {
+  const isMobile = useIsMobile();
   const [improved, setImproved] = useState<string | null>(null);
   const [working, setWorking] = useState(false);
 
@@ -40,12 +42,12 @@ export function ResultsDashboard({ analysis, speech }: { analysis: Analysis; spe
   const totalSeconds = Number(mPart ?? 0) * 60 + Number((sPart ?? "0s").replace("s", ""));
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5 sm:space-y-6">
       {/* headline score */}
       <section className="glass-card glow animate-rise overflow-hidden rounded-3xl">
-        <div className="grid gap-8 p-6 sm:p-9 lg:grid-cols-[auto_1fr] lg:items-center">
-          <ScoreRing value={analysis.score} size={190} stroke={13} tone="brand">
-            <span className="font-display text-5xl font-semibold tabular-nums">
+        <div className="grid gap-7 p-6 text-center sm:p-9 lg:grid-cols-[auto_1fr] lg:items-center lg:text-left">
+          <ScoreRing value={analysis.score} size={isMobile ? 148 : 190} stroke={isMobile ? 11 : 13} tone="brand">
+            <span className="font-display text-4xl font-semibold tabular-nums sm:text-5xl">
               {analysis.score}
             </span>
             <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">/ 100</span>
@@ -58,11 +60,11 @@ export function ResultsDashboard({ analysis, speech }: { analysis: Analysis; spe
             <h2 className="mt-4 font-display text-3xl font-semibold sm:text-4xl">
               Presentation Score
             </h2>
-            <p className="mt-2 max-w-xl text-muted-foreground">
+            <p className="mx-auto mt-2 max-w-xl text-muted-foreground lg:mx-0">
               {verdict(analysis.score)} — scored across delivery confidence, language clarity,
               narrative structure and audience engagement.
             </p>
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="mt-6 flex flex-wrap justify-center gap-2 lg:justify-start">
               {cards.map((c) => (
                 <span
                   key={c.label}
@@ -77,14 +79,20 @@ export function ResultsDashboard({ analysis, speech }: { analysis: Analysis; spe
       </section>
 
       {/* score cards */}
-      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
         {cards.map((c, i) => (
           <div
             key={c.label}
-            className="glass-card animate-rise rounded-2xl p-6 transition-transform hover:-translate-y-1"
+            className="glass-card animate-rise rounded-2xl p-4 transition-transform hover:-translate-y-1 sm:p-6"
             style={{ animationDelay: `${i * 80}ms` }}
           >
-            <ScoreRing value={c.value} label={c.label} tone={c.tone} delay={i * 120} />
+            <ScoreRing
+              value={c.value}
+              label={c.label}
+              tone={c.tone}
+              delay={i * 120}
+              size={isMobile ? 96 : 116}
+            />
           </div>
         ))}
       </section>
@@ -122,12 +130,14 @@ export function ResultsDashboard({ analysis, speech }: { analysis: Analysis; spe
       {/* metrics */}
       <section className="glass-card animate-rise rounded-3xl p-6 sm:p-8">
         <h3 className="font-display text-xl font-semibold">Speaking Metrics</h3>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
           {metrics.map((m) => (
-            <div key={m.label} className="rounded-2xl border border-border bg-surface-2/50 p-5">
+            <div key={m.label} className="rounded-2xl border border-border bg-surface-2/50 p-4 sm:p-5">
               <m.icon className="size-4 text-primary" />
-              <p className="mt-4 font-display text-3xl font-semibold tabular-nums">{m.value}</p>
-              <p className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">
+              <p className="mt-4 font-display text-2xl font-semibold leading-tight tabular-nums sm:text-3xl">
+                {m.value}
+              </p>
+              <p className="mt-1 text-[0.7rem] uppercase tracking-wider text-muted-foreground">
                 {m.label}
               </p>
             </div>
@@ -154,7 +164,7 @@ export function ResultsDashboard({ analysis, speech }: { analysis: Analysis; spe
           ))}
         </div>
 
-        <div className="mt-7 flex flex-wrap items-center gap-4">
+        <div className="mt-7 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
           <button
             onClick={() => {
               setWorking(true);
@@ -164,7 +174,7 @@ export function ResultsDashboard({ analysis, speech }: { analysis: Analysis; spe
                 setWorking(false);
               }, 1400);
             }}
-            className="inline-flex items-center gap-2 rounded-xl bg-[var(--gradient-brand)] px-6 py-3 text-sm font-semibold text-primary-foreground transition-transform hover:scale-[1.02] disabled:opacity-60"
+            className="btn-brand w-full px-6 py-3 text-sm sm:w-auto"
             disabled={working}
           >
             <Wand2 className={`size-4 ${working ? "animate-spin" : ""}`} />
