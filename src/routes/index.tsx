@@ -95,6 +95,12 @@ function CoachPage() {
               <span className="tabular-nums">
                 ~{Math.max(0, Math.round((words / 150) * 60))}s spoken
               </span>
+              {!text.trim() ? (
+                <>
+                  <span className="size-1 rounded-full bg-border" />
+                  <span>Paste a speech or load the example to begin</span>
+                </>
+              ) : null}
             </div>
             <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
               <button

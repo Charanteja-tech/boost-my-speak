@@ -190,7 +190,8 @@ export function improveSpeech(raw: string): string {
     }
     out = out.replace(/\bI think that\b/gi, "").replace(/\bmaybe\b/gi, "").replace(/\s{2,}/g, " ");
     // split overly long sentences at the first ", and"
-    out = out.replace(/,\s+and\s+/, ". ");
+    out = out.replace(/,\s+and\s+/, ". ").trim();
+    out = out.replace(/([.!?]\s+)([a-z])/g, (_m, a: string, b: string) => a + b.toUpperCase());
     return out.charAt(0).toUpperCase() + out.slice(1);
   };
 
