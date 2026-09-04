@@ -61,7 +61,7 @@ function TipsPage() {
     <div className="min-h-screen">
       <SiteHeader />
       <main className="aurora mx-auto max-w-6xl px-5 pb-24 pt-16">
-        <h1 className="font-display text-4xl font-semibold sm:text-5xl">
+        <h1 className="animate-rise font-display text-[2rem] font-semibold sm:text-5xl">
           Speaking <span className="text-gradient">Tips</span>
         </h1>
         <p className="mt-3 max-w-xl text-muted-foreground">

@@ -33,22 +33,22 @@ function HistoryPage() {
     <div className="min-h-screen">
       <SiteHeader />
       <main className="aurora mx-auto max-w-6xl px-5 pb-24 pt-16">
-        <h1 className="font-display text-4xl font-semibold sm:text-5xl">
+        <h1 className="animate-rise font-display text-[2rem] font-semibold sm:text-5xl">
           Presentation <span className="text-gradient">History</span>
         </h1>
         <p className="mt-3 max-w-xl text-muted-foreground">
           Every analysed talk, scored the same way — so progress is measurable, not a feeling.
         </p>
 
-        <section className="mt-10 grid gap-4 sm:grid-cols-3">
+        <section className="mt-10 grid grid-cols-3 gap-3 sm:gap-4">
           {[
             { label: "Average score", value: avg },
             { label: "Best score", value: best },
             { label: "Growth since June", value: `+${growth}` },
           ].map((s) => (
-            <div key={s.label} className="glass-card animate-rise rounded-2xl p-6">
-              <p className="font-display text-4xl font-semibold tabular-nums">{s.value}</p>
-              <p className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">
+            <div key={s.label} className="glass-card animate-rise rounded-2xl p-4 sm:p-6">
+              <p className="font-display text-2xl font-semibold tabular-nums sm:text-4xl">{s.value}</p>
+              <p className="mt-1 text-[0.65rem] uppercase tracking-wider text-muted-foreground sm:text-xs">
                 {s.label}
               </p>
             </div>
